@@ -1,0 +1,13 @@
+﻿<Properties StartupItem="nMVC/nMVC.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="nMVC/MyClass.cs">
+    <Files>
+      <File FileName="nMVC/MyClass.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <AuthorInfo Name="Paige Thompson" Email="erratic@netcrave.de" Copyright="GPL" Company="Netcrave Communications" Trademark="nMVC" />
+</Properties>

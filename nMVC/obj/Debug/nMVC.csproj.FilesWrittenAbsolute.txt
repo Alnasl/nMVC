@@ -1,0 +1,7 @@
+/home/erratic/nMVC/nMVC/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/home/erratic/nMVC/nMVC/bin/Debug/Newtonsoft.Json.dll
+/home/erratic/nMVC/nMVC/bin/Debug/BCrypt.Net.dll
+/home/erratic/nMVC/nMVC/bin/Debug/nMVC.dll.mdb
+/home/erratic/nMVC/nMVC/bin/Debug/nMVC.dll
+/home/erratic/nMVC/nMVC/obj/Debug/nMVC.dll
+/home/erratic/nMVC/nMVC/obj/Debug/nMVC.dll.mdb

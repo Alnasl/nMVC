@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{120FE4C2-E5A5-40C7-9F09-837E595FEB61}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>de.netcrave.nMVC</RootNamespace>
+    <AssemblyName>nMVC</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="BCrypt.Net">
+      <HintPath>..\packages\BCrypt.Net.0.1.0\lib\net35\BCrypt.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Web" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Core Classes\SessionManager.cs" />
+    <Compile Include="Core Classes\SettingsManager.cs" />
+    <Compile Include="Core Classes\UtilitiesManager.cs" />
+    <Compile Include="Core Classes\HTTP\ContentManager.cs" />
+    <Compile Include="Core Classes\HTTP\HTTPServer.cs" />
+    <Compile Include="Core Classes\HTTP\RESTCallbackManager.cs" />
+    <Compile Include="Models\Manager.cs" />
+    <Compile Include="Core Data Objects\SessionIdentity.cs" />
+    <Compile Include="Core Data Objects\HTTP\ContentFile.cs" />
+    <Compile Include="Core Data Objects\HTTP\HttpResponse.cs" />
+    <Compile Include="Core Data Objects\HTTP\RESTExpectsAttribute.cs" />
+    <Compile Include="Core Data Objects\HTTP\RESTKeys.cs" />
+    <Compile Include="Core Data Objects\Settings\DebuggingSettings.cs" />
+    <Compile Include="Core Data Objects\Settings\Settings.cs" />
+    <Compile Include="Models\Status And Errors\BackendQueryStatus.cs" />
+    <Compile Include="Models\Status And Errors\POSTDataError.cs" />
+    <Compile Include="Models\Status And Errors\GuruMeditation.cs" />
+    <Compile Include="Models\DomainObjectBase.cs" />
+    <Compile Include="Models\DomainObjectEnumerator.cs" />
+    <Compile Include="Models\DomainObjectRepository.cs" />
+    <Compile Include="Core Data Objects\UserAccount.cs" />
+    <Compile Include="Core Classes\HTTP\RouterManager.cs" />
+    <Compile Include="Core Classes\nMVCLogger.cs" />
+    <Compile Include="Core Data Objects\Logger\nMVCLogLevel.cs" />
+    <Compile Include="Core Data Objects\HTTP\RESTContractAttribute.cs" />
+    <Compile Include="Core Data Objects\HTTP\RESTServiceAttribute.cs" />
+    <Compile Include="Core Data Objects\Logger\nMVCLogData.cs" />
+    <Compile Include="Extensions\DynamicExtensions.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Core Classes\" />
+    <Folder Include="Models\" />
+    <Folder Include="Core Data Objects\" />
+    <Folder Include="Models\Status And Errors\" />
+    <Folder Include="Core Data Objects\Logger\" />
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>
