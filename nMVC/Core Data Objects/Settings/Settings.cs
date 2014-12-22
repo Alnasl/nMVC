@@ -3,9 +3,9 @@ using de.netcrave.nMVC.Models;
 using System.Reflection;
 
 /// <summary>
-/// JobFinderBootstrap
-/// Author : Paige Thompson (paigeadele@gmail.com)
-/// Copyright 2014
+/// nMVC
+/// Author : Paige Thompson (paigeadele@gmail.com / erratic@yourstruly.sx)
+/// Copyright 2014 Netcrave Communications
 /// This program is free software: you can redistribute it and/or modify
 /// it under the terms of the GNU General Public License as published by
 /// the Free Software Foundation, either version 3 of the License, or
@@ -19,7 +19,6 @@ using System.Reflection;
 /// You should have received a copy of the GNU General Public License
 /// along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /// </summary>
-
 namespace de.netcrave.nMVC.Settings
 {
     public class Settings
