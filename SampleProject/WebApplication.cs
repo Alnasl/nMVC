@@ -20,24 +20,12 @@ namespace SampleProject
 	{
 		public static void Main (string[] args)
 		{
-			WebServer wserv = new WebServer (
-				MainClass.HTTPRequestHandler, 
-				SettingsManager.Instance.settings.HTTPListenerAddress);
-
-			RESTCallbackManager.Instance.RegisterGlobalCallbackHandlers();
-			ContentManager.Instance.PreloadContent();
-
-			RouterManager.Instance.Add(@"^/$", "index.html");
-			RouterManager.Instance.Add(@"^/.*\.(js)$", "js/");
-			RouterManager.Instance.Add(@"^/.*\.(css)$", "css/");
-			RouterManager.Instance.Add(@"^/.*\.(jpg|png)$", "images/");
-
 			nMVCLogger.Instance.Output += (logData) => 
 			{
 				switch(logData.level)
 				{
 				case nMVCLogLevel.Debug:
-					DebugInfoLogging.HandleDebugLog(logData);
+					CustomDebugInfoLogging.HandleDebugLog(logData);
 					break;
 				default:
 					if(SettingsManager.Instance.settings.debugging.AddTracingInfoInHTTPResponse)
@@ -59,6 +47,19 @@ namespace SampleProject
 			nMVCLogger.Instance.AddErrorLevel(nMVCLogLevel.Info);
 			nMVCLogger.Instance.AddErrorLevel(nMVCLogLevel.Warn);
 			nMVCLogger.Instance.AddErrorLevel(nMVCLogLevel.Fatal);
+
+
+			WebServer wserv = new WebServer (
+				MainClass.HTTPRequestHandler, 
+				SettingsManager.Instance.settings.HTTPListenerAddress);
+
+			RESTCallbackManager.Instance.RegisterGlobalCallbackHandlers();
+			ContentManager.Instance.PreloadContent();
+
+			RouterManager.Instance.Add(@"^/$", "index.html");
+			RouterManager.Instance.Add(@"^/.*\.(js)$", "js/");
+			RouterManager.Instance.Add(@"^/.*\.(css)$", "css/");
+			RouterManager.Instance.Add(@"^/.*\.(jpg|png)$", "images/");
 
 			wserv.Run();
 			// TODO all of this code implies that this service will always be run as a command line program

@@ -7,6 +7,7 @@ using System.Security.Cryptography;
 //using System.Runtime.Serialization.Formatters.Binary;
 using Newtonsoft.Json;
 using de.netcrave.nMVC.Models;
+using de.netcrave.nMVC.Accounts;
 
 namespace de.netcrave.nMVC.Session
 {
@@ -36,7 +37,7 @@ namespace de.netcrave.nMVC.Session
 		/// </summary>
 		/// <returns>The authenticated user session identity.</returns>
 		/// <param name="zlu">Zlu.</param>
-		internal SessionIdentity CreateAuthenticatedUserSessionIdentity(UserAccount zlu, SessionIdentity CurrentIdentity)
+		public SessionIdentity CreateAuthenticatedUserSessionIdentity(UserAccount zlu, SessionIdentity CurrentIdentity)
 		{
 			var valid = CurrentIdentity.Revalidate();
 

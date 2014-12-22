@@ -57,6 +57,10 @@ namespace de.netcrave.nMVC.Logger
 			}
 			set
 			{
+				//TODO, this shit is just too slow, its gonna have to be F# or something else.... the thread code 
+				// I wrote wont do though. 
+				output += value;
+				/*
 				output += (data) =>
 				{
 					Thread externalLogHandler = null;
@@ -119,6 +123,7 @@ namespace de.netcrave.nMVC.Logger
 						// something is not playing nice or something needs to be tuned a little bit.
 					}
 				};
+				*/
 			}
 		}
 

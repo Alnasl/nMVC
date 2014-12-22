@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Settings
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <HTTPListenerAddress>
+    <string>http://localhost:8000/</string>
+  </HTTPListenerAddress>
+  <HTTPWorkerThreads>15</HTTPWorkerThreads>
+  <HTTPCompletionPortThreads>15</HTTPCompletionPortThreads>
+  <HtdocRoot>HTML/</HtdocRoot>
+  <HTTPServerHeader>nMVC 0.1</HTTPServerHeader>
+  <debugging>
+    <PrettyPrintJSONResponse>true</PrettyPrintJSONResponse>
+    <AddTracingInfoInHTTPResponse>true</AddTracingInfoInHTTPResponse>
+    <EnableMessagesInHTTPResponse>true</EnableMessagesInHTTPResponse>
+    <EnableExceptions>true</EnableExceptions>
+  </debugging>
+</Settings>

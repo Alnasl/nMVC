@@ -59,13 +59,19 @@ namespace de.netcrave.nMVC.RESTCallbackManager
 		/// </summary>
 		public void RegisterGlobalCallbackHandlers()
 		{
-			var services = Assembly.GetExecutingAssembly().GetTypes();
+			var services = Assembly
+				.GetCallingAssembly()
+				.GetTypes()
+				.Union(
+					Assembly
+					.GetExecutingAssembly()
+					.GetTypes()).ToArray();
 
 			foreach(Type t in services)
 			{
 				if(t.GetCustomAttributes(true).Any(a => a.GetType() == typeof(RESTService)))
 				{
-					nMVCLogger.Instance.Info("Adding REST Service: " + t.ToString());
+					nMVCLogger.Instance.Debug(new { t }, "Adding REST Service");
 					if(t.GetProperty("Instance") != null)
 					{
 						//TODO maybe also add support for instantiating a non-singleton class marked as being 
@@ -82,15 +88,7 @@ namespace de.netcrave.nMVC.RESTCallbackManager
 								RESTContractAttribute data = (RESTContractAttribute) mi.GetCustomAttributes(true)
 									.Single(a => a.GetType() == typeof(RESTContractAttribute));
 
-								nMVCLogger.Instance.Info("Adding data contract for " 								
-									+ "API Version/Level: "
-									+ data.APILevel
-									+ " Contract: " 
-									+ data.RequestHandlerName 
-									+ " Type: " 
-									+ data.HTTPMethod
-									+ " Callback Method: "
-									+ t.ToString() + "." + mi.Name);
+								nMVCLogger.Instance.Debug(new { data, t, mi }, "Adding data contract");
 
 								switch(data.HTTPMethod)
 								{
@@ -121,12 +119,16 @@ namespace de.netcrave.nMVC.RESTCallbackManager
 								case RESTContractAttribute.RequestType.PUT:															
 								case RESTContractAttribute.RequestType.DELETE:								
 								default:
-									nMVCLogger.Instance.Info("unsupported REST contract based on specified request type");
+									nMVCLogger.Instance.Debug(new { data, t, mi }, 
+										"TODO: unsupported REST contract based on specified request type");
 									break;
 								}
 							}
 							if (mi.GetCustomAttributes(true).Any(a => a.GetType() == typeof(RESTExpectsParam)))
 							{
+								nMVCLogger.Instance.Warn("TODO RESTExpectsParam needs to be tested more and isn't actually used at the moment. "
+									+ "You shouldn't rely on it");
+	
 								RESTExpectsParam[] eparams = mi.GetCustomAttributes(true)
 									.Where(a => a.GetType() == typeof(RESTExpectsParam)).Cast<RESTExpectsParam>().ToArray();
 
@@ -135,11 +137,7 @@ namespace de.netcrave.nMVC.RESTCallbackManager
 
 								foreach(RESTExpectsParam eparam in eparams)
 								{
-									nMVCLogger.Instance.Info("adding data input handler for: "									
-										+ " Contract: " 
-										+ data.RequestHandlerName 
-										+ " Expects param: "
-										+ eparam.ExpectKey);
+									nMVCLogger.Instance.Debug(new { data, eparam },"adding data input handler");
 
 								}
 

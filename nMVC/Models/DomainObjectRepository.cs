@@ -22,8 +22,9 @@ namespace de.netcrave.nMVC.Models
 		protected bool _IsReadOnly;
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="de.netcrave.Zombielet.Models.ZombieletObjectCarrier`1"/> class.
+		/// Initializes a new instance of the <see cref="de.netcrave.nMVC.Models.DomainObjectRepository`1"/> class.
 		/// </summary>
+		/// <param name="si">Si.</param>
 		public DomainObjectRepository(SessionIdentity si)
 		{
 			this.si = si;
@@ -31,7 +32,7 @@ namespace de.netcrave.nMVC.Models
 		}
 
 		/// <summary>
-		/// Gets or sets the <see cref="de.netcrave.Zombielet.Models.ZombieletObjectCarrier`1"/> at the specified index.
+		/// Gets or sets the <see cref="de.netcrave.nMVC.Models.DomainObjectRepository`1"/> at the specified index.
 		/// </summary>
 		/// <param name="index">Index.</param>
 		public virtual T this[int index]
@@ -71,9 +72,9 @@ namespace de.netcrave.nMVC.Models
 		}
 
 		/// <summary>
-		/// Add the specified ZombieletObject.
+		/// Add the specified DomainObject.
 		/// </summary>
-		/// <param name="ZZombieletObject">Z zombielet object.</param>
+		/// <param name="DomainObject">Domain object.</param>
 		public virtual void Add(T DomainObject)
 		{
 			DomainObject.si = this.si;
@@ -81,9 +82,9 @@ namespace de.netcrave.nMVC.Models
 		}
 
 		/// <summary>
-		/// Add the specified ZombieletObjects, so much for union
+		/// Add the specified DomainObjects.
 		/// </summary>
-		/// <param name="ZombieletObjects">Zombielet objects.</param>
+		/// <param name="DomainObjects">Domain objects.</param>
 		public virtual void Add(IEnumerable<T> DomainObjects)
 		{
 			foreach(T obj in DomainObjects)
@@ -94,9 +95,9 @@ namespace de.netcrave.nMVC.Models
 		}
 
 		/// <summary>
-		/// Remove the specified ZombieletObject.
+		/// Remove the specified DomainObject.
 		/// </summary>
-		/// <param name="ZombieletObject">Z zombielet object.</param>
+		/// <param name="DomainObject">Domain object.</param>
 		public virtual bool Remove(T DomainObject) 
 		{
 			bool result = false;
@@ -121,9 +122,9 @@ namespace de.netcrave.nMVC.Models
 		}
 			
 		/// <summary>
-		/// Contains the specified ZombieletObject.
+		/// Contains the specified DomainObject.
 		/// </summary>
-		/// <param name="ZombieletObject">Z zombielet object.</param>
+		/// <param name="DomainObject">Domain object.</param>
 		public bool Contains(T DomainObject)
 		{
 			//loop through the inner ArrayList
@@ -143,7 +144,7 @@ namespace de.netcrave.nMVC.Models
 		/// <summary>
 		/// Copies to.
 		/// </summary>
-		/// <param name="ZombieletObjectArray">Zombielet object array.</param>
+		/// <param name="DomainObjectArray">Domain object array.</param>
 		/// <param name="index">Index.</param>
 		public virtual void CopyTo(T[] DomainObjectArray, int index)
 		{
@@ -179,7 +180,7 @@ namespace de.netcrave.nMVC.Models
 		}
 
 		/// <summary>
-		/// Create a new ZombieletObject.
+		/// Create this instance.
 		/// </summary>
 		public static T Create ()
 		{

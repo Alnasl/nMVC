@@ -6,9 +6,9 @@ using de.netcrave.nMVC.Session;
 using de.netcrave.nMVC.Models;
 using de.netcrave.nMVC.Settings;
 
-namespace de.netcrave.nMVC
+namespace de.netcrave.nMVC.Accounts
 {
-	public sealed class UserAccount : DomainObjectBase
+	public class UserAccount : DomainObjectBase
 	{
 		public string UserName;
 		public string Password;
@@ -63,7 +63,7 @@ namespace de.netcrave.nMVC
 			return zlu;
 		}
 			
-		#region implemented abstract members of ZombieletObjectBase
+		#region implemented abstract members of DomainObjectBase
 
 		/// <summary>
 		/// Creates this instance

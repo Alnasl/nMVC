@@ -1,4 +1,4 @@
-﻿<Properties StartupItem="nMVC/nMVC.csproj">
+﻿<Properties StartupItem="SampleProject/SampleProject.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="nMVC/MyClass.cs">
     <Files>

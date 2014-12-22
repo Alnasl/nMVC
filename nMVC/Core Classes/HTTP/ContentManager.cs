@@ -37,6 +37,13 @@ namespace de.netcrave.nMVC.ContentManager
 
 		private void WalkDirectoryTree(System.IO.DirectoryInfo root, int depth = 1)
 		{
+			if(!root.Exists)
+			{
+				// initialization 
+				nMVCLogger.Instance.Info("content directory doesn't exist, creating it");
+				root.Create();
+			}
+
 			System.IO.FileInfo[] files = null;
 			System.IO.DirectoryInfo[] subDirs = null;
 			files = root.GetFiles("*.*");

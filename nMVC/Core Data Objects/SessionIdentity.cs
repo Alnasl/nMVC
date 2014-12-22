@@ -203,7 +203,7 @@ namespace de.netcrave.nMVC.Session
 			return cookies.AsEnumerable();
 		}
 
-		#region implemented abstract members of ZombieletObjectBase
+		#region implemented abstract members of DomainObjectBase
 
 		public override DomainObjectBase Create ()
 		{		
