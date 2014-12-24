@@ -85,7 +85,7 @@ namespace SampleProject
 				return MainClass.HandleGETRequest (ctx);
 
 			case "POST":
-				return MainClass.HandlePOSTRequest (ctx, SessionManager.Instance.GetSessionIdentity(ctx));
+				return MainClass.HandlePOSTRequest (ctx, CustomSessionIdentity.GetSessionIdentity(ctx));
 
 			case "HEAD":
 				return "";
@@ -124,7 +124,7 @@ namespace SampleProject
 				}
 
 				// Is a REST API request
-				SessionIdentity si = SessionManager.Instance.GetSessionIdentity(ctx);
+				SessionIdentity si = CustomSessionIdentity.GetSessionIdentity(ctx);
 				Dictionary<string, string> Headers = UtilitiesManager.Instance.GetHeaders(ctx);
 
 				// This is where the string specified in the REQUEST header is matched against the 

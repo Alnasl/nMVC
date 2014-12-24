@@ -228,16 +228,6 @@ namespace de.netcrave.nMVC.Session
 		}
 
 		/// <summary>
-		/// Retrieve the specified IDCookieID and ValueOfTokenCookie.
-		/// </summary>
-		/// <param name="IDCookieID">Identifier cookie I.</param>
-		/// <param name="ValueOfTokenCookie">Value of token cookie.</param>
-		public static SessionIdentity Retrieve(string IDCookieID, string ValueOfTokenCookie)
-		{
-			throw new NotImplementedException();
-		}
-
-		/// <summary>
 		/// Update this instance.
 		/// </summary>
 		public override BackendQueryStatus.ReturnCode Update ()

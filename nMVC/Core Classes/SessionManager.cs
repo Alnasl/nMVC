@@ -3,9 +3,6 @@ using System.IO;
 using System.Net;
 using BCrypt.Net;
 using System.Security.Cryptography;
-//using System.Runtime.Serialization;
-//using System.Runtime.Serialization.Formatters.Binary;
-using Newtonsoft.Json;
 using de.netcrave.nMVC.Models;
 using de.netcrave.nMVC.Accounts;
 
@@ -28,7 +25,7 @@ using de.netcrave.nMVC.Accounts;
 /// </summary>
 namespace de.netcrave.nMVC.Session
 {
-	public sealed class SessionManager : Manager
+	public class SessionManager : Manager
 	{
 
 		private static volatile SessionManager instance;
@@ -77,69 +74,7 @@ namespace de.netcrave.nMVC.Session
 			{
 				return CurrentIdentity;
 			}
-		}
-
-		/// <summary>
-		/// Gets the session identity (websocket cookies)
-		/// </summary>
-		/// <returns>The session identity.</returns>
-		/// <param name="coll">Coll.</param>
-		/*
-		public SessionIdentity GetSessionIdentity(WebSocketSharp.Net.CookieCollection coll)
-		{
-			if(coll[RESTKeys.SessionCookieId] == null 
-				|| string.IsNullOrEmpty(coll[RESTKeys.SessionCookieId].Value))
-			{
-				//needs a new identity
-				return ZombieletObjectRepository<SessionIdentity>.Create();
-			}
-			else if(coll[RESTKeys.SessionCookieId].Expired)
-			{
-				//needs a new identity
-				return ZombieletObjectRepository<SessionIdentity>.Create();
-			}
-			else
-			{
-				//needs an existing identity
-				return SessionIdentity.Retrieve(coll[RESTKeys.SessionCookieId].Value, 
-					coll[RESTKeys.SessionCookieToken].Value);
-			}
 		}			
-		*/
-		/// <summary>
-		/// Gets the session identity.(HTTP/s cookies)
-		/// </summary>
-		/// <returns>The session identity.</returns>
-		/// <param name="coll">Coll.</param>
-		public SessionIdentity GetSessionIdentity(System.Net.HttpListenerContext ctx)
-		{
-			SessionIdentity ret;
-			System.Net.CookieCollection coll = ctx.Request.Cookies;
-
-			if(coll[RESTKeys.SessionCookieId] == null 
-				|| string.IsNullOrEmpty(coll[RESTKeys.SessionCookieId].Value))
-			{
-				//needs a new identity
-				ret = DomainObjectRepository<SessionIdentity>.Create();
-			}
-			else if(coll[RESTKeys.SessionCookieId].Expired)
-			{
-				//needs a new identity
-				ret = DomainObjectRepository<SessionIdentity>.Create();
-			}
-			else
-			{
-				//needs an existing identity
-				ret = SessionIdentity.Retrieve(coll[RESTKeys.SessionCookieId].Value, 
-					coll[RESTKeys.SessionCookieToken].Value);
-			}
-			foreach(System.Net.Cookie c in ret.GetCookies())
-			{
-				ctx.Response.Cookies.Add(c);
-			}
-			ret.ctx = ctx;
-			return ret;
-		}
 	}
 }
 
