@@ -33,7 +33,7 @@ namespace de.netcrave.nMVC.Models
 		[JsonIgnore]
 		public SessionIdentity si;
 
-		public Guid ZID 
+		public Guid ObjectID 
 		{
 			get
 			{

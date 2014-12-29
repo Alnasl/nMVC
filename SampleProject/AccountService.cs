@@ -211,7 +211,7 @@ namespace SampleProject
 			{
 				CustomUserAccount zlu = new CustomUserAccount();
 				zlu.UserName = "guest";
-				zlu.ZID = System.Guid.Empty;
+				zlu.ObjectID = System.Guid.Empty;
 				return HttpResponse.NewResponse().AddData(zlu);
 			}
 			else

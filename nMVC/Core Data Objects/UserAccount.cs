@@ -67,13 +67,13 @@ namespace de.netcrave.nMVC.Accounts
 		public UserAccount GetClientSideSafeUserObject()
 		{
 			UserAccount zlu = new UserAccount();
-			zlu.ZID = ZID;
+			zlu.ObjectID = ObjectID;
 			zlu.UserName = this.UserName;
 			zlu.FirstName = this.FirstName;
 			zlu.LastName = this.LastName;
-			zlu.Email = (ZID == this.si.UserId) ? this.Email : (EmailVisible) ? this.Email : null;
-			zlu.FirstName = (ZID == this.si.UserId) ? this.FirstName : (NameVisible) ? this.FirstName : null;
-			zlu.LastName =  (ZID == this.si.UserId) ? this.LastName : (NameVisible) ? this.LastName : null;
+			zlu.Email = (ObjectID == this.si.UserId) ? this.Email : (EmailVisible) ? this.Email : null;
+			zlu.FirstName = (ObjectID == this.si.UserId) ? this.FirstName : (NameVisible) ? this.FirstName : null;
+			zlu.LastName =  (ObjectID == this.si.UserId) ? this.LastName : (NameVisible) ? this.LastName : null;
 			zlu.NickName = this.NickName;
 		//	zlu.EmailVisible = this.EmailVisible;
 		//	zlu.NameVisible = this.NameVisible;

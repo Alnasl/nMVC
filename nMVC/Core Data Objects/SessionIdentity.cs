@@ -203,7 +203,7 @@ namespace de.netcrave.nMVC.Session
 		{
 			List<Cookie> cookies = new List<Cookie>();
 
-			Cookie a = new Cookie(RESTKeys.SessionCookieId, this.ZID.ToString());
+			Cookie a = new Cookie(RESTKeys.SessionCookieId, this.ObjectID.ToString());
 			Cookie b = new Cookie(RESTKeys.SessionCookieToken, this.Cookie);
 
 			a.Expires = this._Expires;

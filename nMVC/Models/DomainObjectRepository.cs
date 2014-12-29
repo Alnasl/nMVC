@@ -126,7 +126,7 @@ namespace de.netcrave.nMVC.Models
 				T obj = (T)_innerArray[i];
 
 				//compare the BusinessObjectBase UniqueId property
-				if (obj.ZID == DomainObject.ZID)
+				if (obj.ObjectID == DomainObject.ObjectID)
 				{
 					//remove item from inner ArrayList at index i
 					_innerArray.RemoveAt(i);
@@ -148,7 +148,7 @@ namespace de.netcrave.nMVC.Models
 			foreach (T obj in _innerArray)
 			{
 				//compare the BusinessObjectBase UniqueId property
-				if (obj.ZID == DomainObject.ZID)
+				if (obj.ObjectID == DomainObject.ObjectID)
 				{
 					//if it matches return true
 					return true;

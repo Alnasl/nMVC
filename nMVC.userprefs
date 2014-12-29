@@ -1,8 +1,10 @@
 ﻿<Properties StartupItem="SampleProject/SampleProject.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="nMVC/MyClass.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SampleProject/WebApplication.cs">
     <Files>
-      <File FileName="nMVC/MyClass.cs" Line="1" Column="1" />
+      <File FileName="SampleProject/WebApplication.cs" Line="1" Column="1" />
+      <File FileName="SampleProject/Data Objects/CustomUserAccount.cs" Line="1" Column="1" />
+      <File FileName="SampleProject/Data Objects/CustomSessionIdentity.cs" Line="105" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -60,7 +60,7 @@ namespace de.netcrave.nMVC.Session
 				return null;
 			}
 
-			CurrentIdentity.UserId = zlu.ZID;
+			CurrentIdentity.UserId = zlu.ObjectID;
 			CurrentIdentity.Guest = false;
 			CurrentIdentity.UserName = zlu.UserName;
 
