@@ -63,12 +63,32 @@ namespace de.netcrave.nMVC.RouterManager
 			routes.Keys
 				.Select(s => new Regex(s))
 				.Where(w => w.Match(addr.AbsolutePath).Success)
-				.Select(s => new KeyValuePair<string, Match>(
-					SettingsManager.Instance.settings.HtdocRoot + routes[s.ToString()],
+				.Select(s => new KeyValuePair<string, Match>(routes[s.ToString()],
 					s.Match(addr.AbsolutePath)))
 				.ToList()
-				.ForEach(f => ret.Add(f.Key + ((f.Value.Value.Count() > 1) ? f.Value.Value.Replace('/', ' ').Trim() : "")));
-		
+				.ForEach(f => 
+					{
+						if(f.Value.Value.Count() > 1)
+						{
+							if(f.Key.Contains("/"))
+							{
+								ret.Add(
+									SettingsManager.Instance.settings.HtdocRoot 
+									+ f.Key + f.Value.Value.Replace('/', ' ').Trim());
+							}
+							else
+							{
+								ret.Add(f.Key);
+							}
+						}
+						else
+						{
+							ret.Add(SettingsManager.Instance.settings.HtdocRoot 
+								+ f.Key 
+								+ "");
+						}
+					});
+
 			return ret.ToArray();
 		}
 

@@ -61,6 +61,17 @@ namespace de.netcrave.nMVC.ContentManager
 				root.Create();
 			}
 
+			if(depth == 1)
+			{
+				FileSystemWatcher fsw = new FileSystemWatcher(root.FullName);
+				fsw.Changed += HandleChanged;
+				fsw.Created += HandleCreated;
+				fsw.Deleted += HandleDeleted;
+				fsw.EnableRaisingEvents = true;
+				fsw.BeginInit();
+				fswl.Add(fsw);
+			}
+
 			System.IO.FileInfo[] files = null;
 			System.IO.DirectoryInfo[] subDirs = null;
 			files = root.GetFiles("*.*");

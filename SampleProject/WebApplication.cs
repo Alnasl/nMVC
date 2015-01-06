@@ -60,6 +60,8 @@ namespace SampleProject
 			RouterManager.Instance.Add(@"^/.*\.(js)$", "js/");
 			RouterManager.Instance.Add(@"^/.*\.(css)$", "css/");
 			RouterManager.Instance.Add(@"^/.*\.(jpg|png)$", "images/");
+			// theres also this
+			//router.Add(@"^/follow/(.*?)$", "QUICKFOLLOWUSER");
 
 			wserv.Run();
 			// TODO all of this code implies that this service will always be run as a command line program
@@ -142,12 +144,29 @@ namespace SampleProject
 			{
 				// Not a REST API Request
 				string route = RouterManager.Instance.FindRoute(ctx.Request.Url).FirstOrDefault();
+
 				if(!string.IsNullOrEmpty(route) && ContentManager.Instance.content.ContainsKey(route))
 				{
 					var item = ContentManager.Instance.content[route];
 					ctx.Response.ContentType = item.ContentType.MediaType;
 					ctx.Response.ContentEncoding = System.Text.Encoding.UTF8;
 					return item;
+				}
+				else if(!string.IsNullOrEmpty(route) && RESTCallbackManager.Instance.GETCallbacks.ContainsKey(route))
+				{
+					SessionIdentity si = CustomSessionIdentity.GetSessionIdentity(ctx);
+					Dictionary<string, string> Headers = UtilitiesManager.Instance.GetHeaders(ctx);
+
+					// This is where the string specified in the REQUEST header is matched against the 
+					// GET REST API mappings
+					HttpResponse ret = RESTCallbackManager.Instance.GETCallbacks [route] (Headers, si);						
+					//ctx.Response.ContentType = "application/json; charset=utf-8";
+					if(ret.ErrorCode.Count() > 0)
+					{
+						ctx.Response.StatusCode = 500;
+					}
+					ctx.Response.Redirect("/");
+					return "";
 				}
 				else
 				{
@@ -182,10 +201,8 @@ namespace SampleProject
 					return HttpResponse.NewResponse().AddErrorCode(GuruMeditation.ErrorCode.RESTHandlerRequestNotFound).ToJSON();
 				}
 
-				HttpResponse ret = RESTCallbackManager.Instance.POSTCallbacks [ctx.Request.Headers [RESTKeys.RESTHandlerRequest]] (
-					Headers,
-					si,
-					PostData);
+				HttpResponse ret = RESTCallbackManager.Instance.POSTCallbacks [ctx.Request.Headers [RESTKeys.RESTHandlerRequest]] 
+					(Headers, si, PostData);
 
 				ctx.Response.ContentType = "application/json; charset=utf-8";
 				return ret.ToJSON();
